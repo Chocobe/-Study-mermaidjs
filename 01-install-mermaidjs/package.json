@@ -2,11 +2,14 @@
   "name": "01-install-mermaidjs",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --no-cache"
   },
   "dependencies": {
     "@types/node": "20.4.10",
@@ -18,5 +21,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.3.0"
   }
 }

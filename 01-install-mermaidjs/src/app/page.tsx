@@ -1,9 +1,9 @@
 function App() {
     return (
         <div>
-            Hello Mermaid.js
+            Hello World
         </div>
-    )
+    );
 }
 
 export default App;
