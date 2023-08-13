@@ -10,3 +10,12 @@
 * 설계 공유
 * `mermaid.js` 에서 제공하는 다양한 다이어그램 사용 가능
 
+
+
+<br /><hr /><br />
+
+
+
+## 목차
+
+00. [Nextjs 프로젝트에 `mermaid.js` 설치하기](https://github.com/Chocobe/-Study-mermaidjs/tree/master/00-install-mermaidjs)

@@ -8,12 +8,12 @@ import {
 import mermaid from 'mermaid';
 
 type TMyMermaidProps = {
-    chartString: string;
+    mermaidCode: string;
 };
 
 function MyMermaid(props: TMyMermaidProps) {
     const {
-        chartString,
+        mermaidCode,
     } = props;
 
     const [mermaidSvgString, setMermaidSvgString] = useState<string | null>(null);
@@ -28,7 +28,7 @@ function MyMermaid(props: TMyMermaidProps) {
         async function renderMermaidSvg() {
             const mermaidSvg = await mermaid.render(
                 'chocobe-mermaid-id',
-                chartString
+                mermaidCode
             );
 
             const {
@@ -39,7 +39,7 @@ function MyMermaid(props: TMyMermaidProps) {
         }
 
         renderMermaidSvg();
-    }, [chartString]);
+    }, [mermaidCode]);
 
     return (
         <div>
