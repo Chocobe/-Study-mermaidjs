@@ -19,3 +19,5 @@
 ## 목차
 
 00. [Nextjs 프로젝트에 `mermaid.js` 설치하기](https://github.com/Chocobe/-Study-mermaidjs/tree/master/00-install-mermaidjs)
+
+01. [flowchart](https://github.com/Chocobe/-Study-mermaidjs/tree/master/01-flowchart)
