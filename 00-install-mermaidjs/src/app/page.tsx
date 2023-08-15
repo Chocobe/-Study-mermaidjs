@@ -1,4 +1,4 @@
-import MyMermaid from '@/components/MyMermaid';
+import MyMermaid from '@/components/MyMermaid/MyMermaid';
 
 const mermaidCode = `
 erDiagram

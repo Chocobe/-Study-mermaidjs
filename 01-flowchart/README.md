@@ -14,7 +14,7 @@
 
 <br /><hr /><br />
 
-## 1. React 와 Google OAuth2 연동 계획하기
+## 1. React 와 Google OAuth2 연동 flowchart
 
 `flowchart` 를 그리기 전에 로그인 흐름을 정리합니다.
 
@@ -25,6 +25,62 @@
     3. Google OAuth2 서버 `응답 처리` (`suth-code`, `callback` 방식)
 3. 응답 받은 `Access Token` 을 `Back-End Login API` 의 payload 로 전달
 4. `Back-End Login API` 응답 데이터(`accessToken`, `refreshToken`) 을 `localStorage` 에 저장
+
+<br />
+
+정리한 로그인 흐름을 `flowchart` 작성하면, 다음과 같습니다.
+
+```mermaid
+---
+title: 1. React 와 Google OAuth2 연동 flowchart
+---
+
+graph TB
+    subgraph Project
+        subgraph FE["Front-End"]
+            loginButton(["로그인 버튼"])
+            requestUserDataApi[["User 정보 요청"]]
+            setTokensToLocalStorage[["localStorage 에 token 저장"]]
+            completedLogin(["로그인 완료"])
+
+            subgraph callbackOnSucceededGoogleLogin["로그인 성공 callback"]
+                requestLoginApi[["Login 요청"]]
+            end
+        end
+
+        subgraph BE["Back-End"]
+            responseLoginApi[["Login 응답"]]
+            responseUserDataApi[["User 정보 응답"]]
+        end
+    end
+
+    subgraph Google
+        subgraph GClient["Google Client"]
+            GClient_openLoginForm[["Google Login Client 페이지 열기"]]
+            GClient_submitLoginForm["Login Form 제출하기"]
+            GClient_userAgreeButton["사용자 동의 버튼"]
+        end
+
+        subgraph GServer["Google Server"]
+            GServer_responseAuthCode[["AuthCode 응답"]]
+        end
+    end
+
+
+
+    loginButton --> GClient
+
+    GClient_openLoginForm --> GClient_submitLoginForm
+    GClient_submitLoginForm --> GClient_userAgreeButton
+    GClient_userAgreeButton --> GServer
+    GServer_responseAuthCode --> callbackOnSucceededGoogleLogin
+
+    requestLoginApi --> responseLoginApi
+    responseLoginApi --> setTokensToLocalStorage
+    responseLoginApi --> requestUserDataApi
+    requestUserDataApi --> responseUserDataApi
+    responseUserDataApi --> completedLogin
+```
 
 
 
